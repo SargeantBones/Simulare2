@@ -1,0 +1,81 @@
+/*
+#include<stdio.h>;
+#include<conio.h>
+
+typedef struct {
+
+	int nr_matricol;
+	char nume_student[30], an;
+	int grupa;
+	char tip;
+	struct
+	{
+		char zi, luna;
+		int an;
+	}data;
+	struct
+	{
+		char ora, minut;
+	}ora_intrare;
+	struct
+	{
+		char ora, minut;
+	}ora_iesire;
+}student;
+int main()
+{
+	FILE* f;
+	student s;
+	int cod;
+	f = fopen("SecvStud.dat", "rb+");
+	printf("cod: ");
+	scanf("%d", &cod);
+	if (!f)printf("Fisierul nu a putut fi deschis.");
+	else
+	{
+		fseek(f, 0, SEEK_END);
+		while(!feof(stdin))
+		{
+			printf("Nr.matricol: ");
+			scanf("%d", &s.nr_matricol);
+
+			printf("Nume Student: ");
+			scanf("%s", &s.nume_student);
+
+			printf("An: ");
+			scanf("%d", &s.an);
+
+			printf("Grupa: ");
+			scanf("%d", &s.grupa);
+
+			printf("Tip: ");
+			scanf("%s", &s.tip);
+
+			printf("Zi: ");
+			scanf("%d", &s.data.zi);
+
+			printf("Luna: ");
+			scanf("%d", &s.data.luna);
+
+			printf("An: ");
+			scanf("%d", &s.data.an);
+
+			printf("Ora intrare: ");
+			scanf("%d", &s.ora_intrare.ora);
+
+			printf("Minut Intrare: ");
+			scanf("%d", &s.ora_intrare.minut);
+
+			printf("Ora iesire: ");
+			scanf("%d", &s.ora_iesire.ora);
+
+			printf("Minut iesire: ");
+			scanf("%d", &s.ora_iesire.minut);
+			printf("cod: ");
+			scanf("%d", &cod);
+			fwrite(&s, sizeof(student), 1, f);
+		}
+	}
+	fclose(f);
+}
+*/
