@@ -1,0 +1,53 @@
+
+#include<stdio.h>;
+#include<conio.h>
+
+typedef struct {
+
+	int nr_matricol;
+	char nume_student[30], an;
+	int grupa;
+	char tip;
+	struct
+	{
+		char zi, luna;
+		int an;
+	}data;
+	struct
+	{
+		char ora, minut;
+	}ora_intrare;
+	struct
+	{
+		char ora, minut;
+	}ora_iesire;
+}student;
+
+void Listare(const char* numebin, const char* numetext)
+{
+	FILE* f, * g;
+	g = NULL;
+	student s;
+	f = fopen(numebin, "rb+");
+	if (!f)printf("Fisierul nu a putut fi deschis.");
+	else
+	{
+		g = fopen(numetext, "w");
+		fprintf(g, "Nr Matricol    Nume Student    An  Grupa TIP    Data    Ora intrare  Ora iesire ", "");
+		fread(&s, sizeof(student), 1, f);
+		while (!feof(f))
+		{
+			fprintf(g, "\n %4d %20s %6d %5d %3c %3d.%d.%d %5d:%d %8d:%d", s.nr_matricol, s.nume_student, s.an, s.grupa, s.tip, s.data.zi, s.data.luna, s.data.an, s.ora_intrare.ora, s.ora_intrare.minut, s.ora_iesire.ora, s.ora_iesire.minut);
+			fprintf(g, "\n");
+			fread(&s, sizeof(student), 1, f);
+		}
+	}
+	fclose(f);
+	fclose(g);
+}
+int main()
+{
+	Listare("SecvStud.dat", "Studenti.txt");
+	_getch();
+	return 0;
+}
